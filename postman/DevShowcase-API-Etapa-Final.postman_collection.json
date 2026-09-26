@@ -1,0 +1,140 @@
+{
+  "info": {
+    "name": "DevShowcase API - Etapa Final",
+    "_postman_id": "devshowcase-final",
+    "description": "Coleção para demonstrar os endpoints exigidos na etapa final.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "projectId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "1 - Criar perfil",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Geraldo Barbosa Coelho\",\"email\":\"geraldo@example.com\",\"bio\":\"Desenvolvedor\",\"githubUrl\":\"https://github.com/exemplo\",\"linkedinUrl\":\"https://linkedin.com/in/exemplo\"}"
+        },
+        "url": "{{baseUrl}}/api/profiles"
+      }
+    },
+    {
+      "name": "2 - Criar tecnologia",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Java\"}"
+        },
+        "url": "{{baseUrl}}/api/technologies"
+      }
+    },
+    {
+      "name": "3 - Criar projeto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\":\"DevShowcase\",\"description\":\"API de portfólio\",\"repositoryUrl\":\"https://github.com/exemplo/devshowcase\",\"demoUrl\":\"https://example.com\",\"profileId\":1,\"technologyIds\":[1]}"
+        },
+        "url": "{{baseUrl}}/api/projects"
+      }
+    },
+    {
+      "name": "4 - GET projetos - paginação",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/projects?page=0&size=10"
+      }
+    },
+    {
+      "name": "5 - GET projetos - filtro Java",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/projects?technology=Java&page=0&size=10"
+      }
+    },
+    {
+      "name": "6 - POST feedback - nota válida",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"rating\":5,\"comment\":\"Projeto muito bom!\",\"author\":\"Lucas José de Sousa\"}"
+        },
+        "url": "{{baseUrl}}/api/projects/{{projectId}}/feedbacks"
+      }
+    },
+    {
+      "name": "7 - POST feedback - erro 400",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"rating\":8,\"comment\":\"\"}"
+        },
+        "url": "{{baseUrl}}/api/projects/{{projectId}}/feedbacks"
+      }
+    },
+    {
+      "name": "8 - PUT upvote",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/api/projects/{{projectId}}/upvote"
+      }
+    },
+    {
+      "name": "9 - GET projeto inexistente - erro 404",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/api/projects/999999/upvote"
+      }
+    },
+    {
+      "name": "10 - Swagger UI",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/swagger-ui.html"
+      }
+    }
+  ]
+}

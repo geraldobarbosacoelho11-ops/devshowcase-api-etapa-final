@@ -1,0 +1,3 @@
+package com.devshowcase.controller;
+import com.devshowcase.dto.*; import com.devshowcase.service.ProfileService; import jakarta.validation.Valid; import org.springframework.http.HttpStatus; import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/profiles") public class ProfileController {private final ProfileService service; public ProfileController(ProfileService service){this.service=service;} @PostMapping @ResponseStatus(HttpStatus.CREATED) public ProfileResponse create(@Valid @RequestBody ProfileRequest r){return service.create(r);} @GetMapping("/{id}") public ProfileResponse find(@PathVariable Long id){return service.findById(id);}}

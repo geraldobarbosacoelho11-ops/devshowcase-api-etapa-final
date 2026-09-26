@@ -1,0 +1,3 @@
+package com.devshowcase.controller;
+import com.devshowcase.dto.*; import com.devshowcase.service.TechnologyService; import jakarta.validation.Valid; import org.springframework.http.HttpStatus; import org.springframework.web.bind.annotation.*; import java.util.*;
+@RestController @RequestMapping("/api/technologies") public class TechnologyController {private final TechnologyService service; public TechnologyController(TechnologyService service){this.service=service;} @PostMapping @ResponseStatus(HttpStatus.CREATED) public TechnologyResponse create(@Valid @RequestBody TechnologyRequest r){return service.create(r);} @GetMapping public List<TechnologyResponse> findAll(){return service.findAll();}}

@@ -1,0 +1,68 @@
+{
+  "info": {
+    "name": "DevShowcase API",
+    "description": "Coleção para demonstrar os endpoints da primeira etapa da atividade.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key": "baseUrl", "value": "http://localhost:8080"},
+    {"key": "profileId", "value": "1"},
+    {"key": "technologyId", "value": "1"}
+  ],
+  "item": [
+    {
+      "name": "Profiles",
+      "item": [
+        {
+          "name": "POST - Criar perfil",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\n  \"name\": \"João da Silva\",\n  \"email\": \"joao@example.com\",\n  \"bio\": \"Desenvolvedor de software\",\n  \"githubUrl\": \"https://github.com/joaosilva\",\n  \"linkedinUrl\": \"https://www.linkedin.com/in/joaosilva\"\n}"},
+            "url": "{{baseUrl}}/api/profiles"
+          }
+        },
+        {
+          "name": "GET - Buscar perfil",
+          "request": {"method": "GET", "url": "{{baseUrl}}/api/profiles/{{profileId}}"}
+        }
+      ]
+    },
+    {
+      "name": "Technologies",
+      "item": [
+        {
+          "name": "POST - Criar tecnologia",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\n  \"name\": \"Java\"\n}"},
+            "url": "{{baseUrl}}/api/technologies"
+          }
+        },
+        {
+          "name": "GET - Listar tecnologias",
+          "request": {"method": "GET", "url": "{{baseUrl}}/api/technologies"}
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "POST - Criar projeto",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\n  \"title\": \"Meu primeiro projeto\",\n  \"description\": \"Projeto desenvolvido com Java e Spring Boot.\",\n  \"repositoryUrl\": \"https://github.com/joaosilva/meu-projeto\",\n  \"demoUrl\": \"https://example.com\",\n  \"profileId\": {{profileId}},\n  \"technologyIds\": [{{technologyId}}]\n}"},
+            "url": "{{baseUrl}}/api/projects"
+          }
+        },
+        {
+          "name": "GET - Listar projetos",
+          "request": {"method": "GET", "url": "{{baseUrl}}/api/projects"}
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Renomeie este arquivo para application-local.properties e informe sua senha.
+# Este arquivo local não deve ser enviado ao GitHub.
+DB_USERNAME=postgres
+DB_PASSWORD=COLOQUE_AQUI_A_SENHA_DO_POSTGRESQL
